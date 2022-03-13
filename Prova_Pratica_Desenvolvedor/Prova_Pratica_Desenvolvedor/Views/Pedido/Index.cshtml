@@ -1,0 +1,69 @@
+﻿@using Prova_Pratica_Desenvolvedor.ViewModels;
+@model List<PedidoViewModel>
+@{
+    ViewData["Title"] = "Listagem de pedidos";
+}
+
+<style>
+    .vencidos {
+        color: red;
+    }
+
+    .vencendo {
+        color: yellow;
+    }
+
+    .validos {
+        color: green;
+    }
+
+    .padrao {
+        color: black;
+    }
+</style>
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Pedido" asp-action="Criar">Adicionar novo pedido</a>
+        <br />
+
+    </div>
+
+    <h1 class="display-4">Listagem de pedidos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Produto</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Data de Vencimento</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (PedidoViewModel pedido in Model)
+                {
+                    <tr class=@pedido.cor>
+                        <th scope="row">@pedido.id</th>
+                        <td>@pedido.nome_produto</td>
+                        <td>@pedido.valor</td>
+                        <td>@pedido.date</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a role="button" class="btn btn-primary" asp-route-id="@pedido.id" asp-controller="Pedido" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@pedido.id" asp-controller="Pedido" asp-action="ApagarConfirmacao">Apagar</a>
+                                @if (@pedido.cor != "vencidos")
+                                {
+                                    <a role="button" class="btn btn-primary" asp-route-id="@pedido.id" asp-controller="Pedido" asp-action="Descontar">Desconto</a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,11 @@
+﻿@model PedidoModel
+@{
+    ViewData["Title"] = "Confirmação de remoção de pedido";
+}
+
+<div class="text-center">
+    <h3>Realmente deseja apagar o pedido (@Model.nome_produto)?</h3>
+</div>
+
+<a class="btn btn-primary btn-block" role="button" asp-controller="Pedido" asp-action="Index">Cancelar exclusão</a>
+<a class="btn btn-danger btn-block" role="button" asp-controller="Pedido" asp-route-id="@Model.id" asp-action="Apagar">Confirmar exclusão</a>

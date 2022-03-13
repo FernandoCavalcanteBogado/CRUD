@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Aplicar desconto a pedido";
+}
+@model PedidoModel
+<div class="text-center">
+
+    <h1 class="display-4">Aplicar desconto a pedido</h1>
+
+</div>
+
+<form asp-controller="Pedido" asp-action="Descontar" method="post">
+    <h3>O valor do produto com o desconto de 10% será de R$ @Model.valor.ToString("F")</h3>
+    <input type="hidden" asp-for="id" />
+    <input type="hidden" asp-for="nome_produto" />
+    <input type="hidden" asp-for="valor" />
+    <input type="hidden" asp-for="data_vencimento" />
+
+    <button type="submit" class="btn btn-primary btn-block">Aplicar desconto</button>
+    <a class="btn btn-secondary btn-block" asp-controller="Pedido" asp-action="Index" role="button">Voltar</a>
+</form>
