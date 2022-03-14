@@ -29,21 +29,21 @@ namespace Prova_Pratica_Desenvolvedor.Controllers
                 pedido.id = item.id;
                 pedido.nome_produto = item.nome_produto;
                 pedido.valor = item.valor;
-                pedido.date = item.data_vencimento.Date;
+                pedido.date = item.date.Date;
 
-                if (item.data_vencimento.Date > DateTime.Now.AddDays(3).Date)
+                if (item.date.Date > DateTime.Now.AddDays(3).Date)
                 {
                     pedido.cor = "validos";
                 }
-                else if (item.data_vencimento.Date == DateTime.Now.AddDays(-3).Date)
+                else if (item.date.Date == DateTime.Now.AddDays(-3).Date)
                 {
                     pedido.cor = "vencendo";
                 }
-                else if (item.data_vencimento.Date < DateTime.Now.Date)
+                else if (item.date.Date < DateTime.Now.Date)
                 {
                     pedido.cor = "vencidos";
                 }
-                else if (item.data_vencimento.Date >= DateTime.Now.Date && item.data_vencimento.Date < DateTime.Now.AddDays(-2).Date)
+                else if (item.date.Date >= DateTime.Now.Date && item.date.Date < DateTime.Now.AddDays(-2).Date)
                 {
                     pedido.cor = "padrao";
                 }

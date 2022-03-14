@@ -36,7 +36,7 @@ namespace Prova_Pratica_Desenvolvedor.Repository
 
             pedidoDB.nome_produto = pedido.nome_produto;
             pedidoDB.valor = pedido.valor;
-            pedidoDB.data_vencimento = pedido.data_vencimento;
+            pedidoDB.date = pedido.date;
 
             _bancoContext.Pedidos.Update(pedidoDB);
             _bancoContext.SaveChanges();
